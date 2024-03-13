@@ -1,0 +1,81 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: luxury-deployment
+  namespace: luxury-namespace
+spec:
+  selector:
+    matchLabels:
+      app: luxury
+  replicas: 2
+  template:
+    metadata:
+      name: luxury-pod
+      labels:
+        app: luxury
+    spec:
+    containers:
+    - name: luxury-con
+      image: nsku537/luxury:46
+      ports:
+      - containerPort: 8000
+      env:
+      - name: db_host_name
+        valueFrom:
+          secretKeyRef:
+            name: luxury-sec
+            key: DB_HOST_NAME
+      - name: db_port 
+        valueFrom:
+          secretKeyRef:
+            name: luxury-sec
+            key:  DB_PORT
+      - name: db_username 
+        valueFrom:
+          secretKeyRef:
+            name: luxury-sec
+            key:  DB_USER_NAME
+      - name: db_password 
+        valueFrom:
+          secretKeyRef:
+            name: luxury-sec
+            key:  DB_PORTDB_PASSWORD
+      - name: db_name 
+        valueFrom:
+          secretKeyRef:
+            name: luxury-sec
+            key:  DB_NAME     
+      - name: aws_bucket_name 
+        valueFrom:
+          secretKeyRef:
+            name: luxury-sec
+            key:  aws_bucket                   
+      - name: aws_access
+        valueFrom:
+          secretKeyRef:
+            name: luxury-sec
+            key:  aws_access_key
+      - name: aws_secret
+        valueFrom:
+          secretKeyRef:
+            name: luxury-sec
+            key:  aws_Secret_access      
+
+
+
+
+---
+
+apiversion: v1
+kind: Service
+metadata:
+  name: luxury-service
+  namespace: luxury-namespace
+spec:
+  selector:
+    app: luxury
+  ports:
+  - protocol: TCP
+    port: 8000
+    targetPort: 8000  
+
