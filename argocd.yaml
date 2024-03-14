@@ -14,7 +14,6 @@ spec:
   destination:
     server: https://kubernetes.default.svc  # The Kubernetes API server URL
     namespace: luxury-namespace
-    createNamespace: true
 
   syncPolicy:
     automated:
