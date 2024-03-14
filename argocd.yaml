@@ -14,13 +14,11 @@ spec:
   destination:
     server: https://kubernetes.default.svc  # The Kubernetes API server URL
     namespace: luxury-namespace
+    createNamespace: true
 
   syncPolicy:
-    syncOptions:
-    - CreateNamespace: true
-
     automated:
       selfHeal: true
-      purne: true      
+      prune: true      
 
       
