@@ -1,0 +1,26 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: luxury-argocd-application
+  namespace: argocd
+spec:
+  project: default
+
+  source:
+    repoURL: https://github.com/saikumar561/Luxury_Hotel.git
+    targetRevision: HEAD
+    path: Manifest
+  
+  destination:
+    server: https://kubernetes.default.svc  # The Kubernetes API server URL
+    namespace: luxury-namespace
+
+  syncPolicy:
+    syncOptions:
+    - CreateNamespace: true
+
+    automated:
+      selfHeal: true
+      purne: true      
+
+      
