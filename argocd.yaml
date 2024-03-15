@@ -8,13 +8,8 @@ spec:
 
   source:
     repoURL: https://github.com/saikumar561/Luxury_Hotel.git
-    targetRevision: HEAD
+    targetRevision: master
     path: Manifest
-    auth:
-      git:
-        secretRef:
-          name: argocd-secret
-          key: token
   
   destination:
     server: https://kubernetes.default.svc  # The Kubernetes API server URL
