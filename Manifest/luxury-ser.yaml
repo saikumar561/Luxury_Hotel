@@ -1,0 +1,14 @@
+
+apiversion: v1
+kind: Service
+metadata:
+  name: luxury-service
+  namespace: luxury-namespace
+spec:
+  selector:
+    app: luxury
+  ports:
+  - protocol: TCP
+    port: 8000
+    targetPort: 8000  
+
