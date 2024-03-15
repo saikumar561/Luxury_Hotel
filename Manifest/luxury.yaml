@@ -16,7 +16,7 @@ spec:
     spec:
     containers:
     - name: luxury-con
-      image: nsku537/luxury:46
+      image: nsku537/luxury:45
       ports:
       - containerPort: 8000
       env:
