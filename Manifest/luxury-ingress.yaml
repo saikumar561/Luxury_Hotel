@@ -1,0 +1,17 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: luxury-ingress
+  namespace: luxury-namespace
+spec:
+  rules:
+  - host: luxury-hotel-sai.com
+    http:
+      paths:
+      - path: /
+        pathType: Prefix
+        backend:
+          service:
+            name: luxury-service
+            port:
+              number: 8000
