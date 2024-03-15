@@ -39,7 +39,7 @@ spec:
         valueFrom:
           secretKeyRef:
             name: luxury-sec
-            key:  DB_PORTDB_PASSWORD
+            key:  DB_PASSWORD
       - name: db_name 
         valueFrom:
           secretKeyRef:
